@@ -1,0 +1,19 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/go-postgres
+{
+	"name": "Go & nginx",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	// Use 'postCreateCommand' load in the wasm_exec.js file to the project
+	"postCreateCommand": "cp $(go env GOROOT)/misc/wasm/wasm_exec.js /workspaces/go-wasm-javascript-benchmark/public/dist && cp $(tinygo env TINYGOROOT)/targets/wasm_exec.js /workspaces/go-wasm-javascript-benchmark/public/dist/tiny_wasm_exec.js",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot"
+			]
+		}
+	}
+}

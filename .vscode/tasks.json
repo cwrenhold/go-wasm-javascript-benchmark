@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build wasm",
+            "type": "shell",
+            "command": "GOOS=js GOARCH=wasm go build -ldflags=\"-s -w\" -o public/dist/random.wasm src/random.go",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build wasm with tinygo",
+            "type": "shell",
+            "command": "tinygo build -o public/dist/tiny_random.wasm -target wasm src/random.go",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
